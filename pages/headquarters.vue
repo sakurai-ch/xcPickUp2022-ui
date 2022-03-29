@@ -314,11 +314,11 @@ export default {
   },
   methods: {
     async getPlayers() {
-      this.players = (await this.$axios.get("/proxy/players/")).data.data;
+      this.players = (await this.$axios.get("/v1/players/")).data.data;
     },
 
     async getDrivers() {
-      this.drivers = (await this.$axios.get("/proxy/drivers/")).data.data;
+      this.drivers = (await this.$axios.get("/v1/drivers/")).data.data;
       this.drivers.forEach(driver => driver["color"]="primary");
       this.drivers.push(
         { 

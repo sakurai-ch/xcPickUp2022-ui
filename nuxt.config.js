@@ -84,9 +84,8 @@ export default {
   },
 
   proxy: {
-    '/proxy/': {
-      target: 'https://dojikarasu2022-api.herokuapp.com',
-      pathRewrite: {'^/proxy': '/api/v1'},
+    '/v1': {
+      target: 'https://dojikarasu2022-api.herokuapp.com/api',
     },
   }
 }
