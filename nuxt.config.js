@@ -50,7 +50,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://dojikarasu2022-api.herokuapp.com/api/v1'
+    proxy: true,
+    // baseURL: 'https://dojikarasu2022-api.herokuapp.com/api/v1'
     // baseURL: 'http://localhost:8000/api/v1'
   },
 
@@ -80,5 +81,12 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  proxy: {
+    '/proxy/': {
+      target: 'https://dojikarasu2022-api.herokuapp.com',
+      pathRewrite: {'^/proxy': '/api/v1'},
+    },
   }
 }
