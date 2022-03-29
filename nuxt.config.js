@@ -50,8 +50,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // baseURL: 'https://xcpickup-api.herokuapp.com/api/v1'
-    baseURL: 'http://localhost:8000/api/v1'
+    baseURL: 'https://dojikarasu2022-api.herokuapp.com/api/v1'
+    // baseURL: 'http://localhost:8000/api/v1'
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

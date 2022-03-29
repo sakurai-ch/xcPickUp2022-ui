@@ -39,7 +39,7 @@
             <template v-for="player in players" >
               <template v-if="player.driver=='---'">
                 <tr :key= player.id>
-                  <td>{{ player.id }}</td>
+                  <td>{{ player.no }}</td>
                   <td>{{ player.name }}</td>
                   <td>{{ player.glider_type }}</td>
                   <td 
@@ -109,7 +109,7 @@
             <template v-for="player in players">
               <template v-if="player.driver==driver.name">
                 <tr :key= player.id>
-                  <td>{{ player.id }}</td>
+                  <td>{{ player.no }}</td>
                   <td>{{ player.name }}</td>
                   <td>{{ player.glider_type }}</td>
                   <td 
