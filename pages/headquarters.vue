@@ -314,11 +314,11 @@ export default {
   },
   methods: {
     async getPlayers() {
-      this.players = (await this.$axios.get("/players/")).data.data;
+      this.players = (await this.$axios.get("/players")).data.data;
     },
 
     async getDrivers() {
-      this.drivers = (await this.$axios.get("/drivers/")).data.data;
+      this.drivers = (await this.$axios.get("/drivers")).data.data;
       this.drivers.forEach(driver => driver["color"]="primary");
       this.drivers.push(
         { 
@@ -360,7 +360,7 @@ export default {
     },
 
     async editPlayer() {
-      const updatedPlayer = await this.$axios.put("/players/",
+      const updatedPlayer = await this.$axios.put("/players",
         {
           id: this.editedPlayer.id,
           state: this.editedPlayer.state,
