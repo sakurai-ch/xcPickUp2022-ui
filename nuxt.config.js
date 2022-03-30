@@ -9,8 +9,9 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - xcPickUp2022-ui',
-    title: 'xcPickUp2022-ui',
+    // titleTemplate: '%s - 2022 Sky Grand Prix in Ashio',
+    titleTemplate: '2022 Sky Grand Prix in Ashio',
+    title: '2022 Sky Grand Prix in Ashio',
     htmlAttrs: {
       lang: 'en'
     },
