@@ -114,7 +114,6 @@
       v-show="editModal"
       flat 
       class="modal-inner modal"
-      
     >
       <v-card-text>
         <v-container>
@@ -296,7 +295,7 @@ thead tr {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  min-width: 250px;
+  min-width: 300px;
 }
 
 .red-text{

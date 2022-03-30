@@ -440,12 +440,12 @@ thead tr {
 
 .modal-inner {
   position: absolute;
-  position: fixed;
-  top: 50%;
+  /* position: fixed; */
+  top: 270px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   z-index: 100;
-  min-width: 250px;
+  min-width: 350px;
 }
 
 .red-text{

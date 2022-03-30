@@ -2,7 +2,7 @@
   <v-row>
     <v-spacer/>
     <v-col
-      cols=6 
+      lg=6 md=6 sm=6 cols=10
       class="mt-5"
     >
       <p class="mb-2 mt-5">ドライバー登録</p>

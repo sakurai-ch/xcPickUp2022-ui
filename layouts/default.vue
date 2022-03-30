@@ -5,6 +5,7 @@
       fixed
       app
       :style="{ background: $vuetify.theme.themes.light.bar }"
+      style="z-index:900;"
     >
       <v-toolbar-title v-text="title"/>
       <v-spacer />
