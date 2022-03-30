@@ -49,6 +49,14 @@
               <v-btn
                 class="orange lighten-3"
                 @click= createDriver()
+                v-if= !btnClick
+              >
+                登録
+              </v-btn>
+
+              <v-btn
+                class="grey"
+                v-if= btnClick
               >
                 登録
               </v-btn>
@@ -67,12 +75,14 @@ export default {
     return {
       name: "",
       capacity: 1,
-      capacityItems: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+      capacityItems: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+      btnClick: false,
     }
   },
   methods: {
     async createDriver() {
-      await this.$axios.post("/drivers/",
+      this.btnClick = true,
+      await this.$axios.post("/drivers",
         {
           name: this.name,
           capacity: this.capacity,

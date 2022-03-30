@@ -277,6 +277,14 @@
             <v-btn
               class="orange lighten-3"
               @click= editPlayer()
+              v-if= !btnClick
+            >
+              決定
+            </v-btn>
+
+            <v-btn
+              class="grey"
+              v-if= btnClick
             >
               決定
             </v-btn>
@@ -310,6 +318,7 @@ export default {
       currentPlayerDriver: "",
       currentPlayerMap: "",
       editModal:false,
+      btnClick: false,
     };
   },
   methods: {
@@ -360,6 +369,7 @@ export default {
     },
 
     async editPlayer() {
+      this.btnClick = true;
       const updatedPlayer = await this.$axios.put("/players",
         {
           id: this.editedPlayer.id,
@@ -369,6 +379,7 @@ export default {
         }
       )
       this.getPlayers();
+      this.btnClick = false;
       this.editModal = false;
     },
 
