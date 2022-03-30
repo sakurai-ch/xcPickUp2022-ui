@@ -31,80 +31,12 @@
       </v-row>
     </v-col>
 
-    <!-- headquarters -->
-    <v-col 
-      class="text-center" 
-      lg=6 md=6 sm=6 cols=12
-    >
-      <div class="my-5">
-        <p class="mb-1 ml-4 text-left">
-          ■ 未手配
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <td width="10%">No</td>
-              <td width="20%">Name</td>
-              <td width="15%">Type</td>
-              <td width="10%">Sts</td>
-              <td width="15%">Dist</td>
-              <td width="10%">Map</td>
-              <td width="10%">Edit</td>
-            </tr>
-          </thead>
-          <tbody>
-            <template v-for="player in players" >
-              <template v-if="player.driver=='---'">
-                <tr :key= player.id>
-                  <td>{{ player.no }}</td>
-                  <td>{{ player.name }}</td>
-                  <td>{{ player.glider_type }}</td>
-                  <td 
-                    :class= stateColor(player.state)
-                    @click= openEdit(player)
-                  >
-                    {{ player.state }}
-                  </td>
-                  <td>{{ player.direction }}{{ player.distance }}</td>
-                  <td 
-                    v-if="player.map!='' && player.map!=null" 
-                    :key="'map'+player.id"
-                  >
-                    <v-icon
-                      small
-                      class="mr-2"
-                      @click= openMap(player)
-                    >
-                      mdi-google-maps
-                    </v-icon>
-                  </td>
-                  <td v-else :key="'map'+player.id">
-                  </td>
-                  <td>
-                    <v-icon
-                      small
-                      class="mr-2"
-                      @click= openEdit(player)
-                    >
-                      mdi-pencil
-                    </v-icon>
-                  </td>
-                </tr>
-              </template>
-            </template>
-          </tbody>
-        </table>
-      </div>
-    </v-col>
-
     <!-- driver -->
     <v-col 
       class="text-center" 
-      lg=6 md=6 sm=6 cols=12
+      lg=12 md=12 sm=12 cols=12
     >
       <div 
-        v-for="driver in drivers" 
-        :key= driver.id
         class="my-5 mb-10"
       >
         <p class="mb-1 ml-4 text-left">
@@ -124,8 +56,11 @@
           </thead>
           <tbody>
             <template v-for="player in players">
-              <template v-if="player.driver==driver.name">
-                <tr :key= player.id>
+              <template v-if="player.driver==driver.name && (player.state=='手配' || player.state=='済')">
+                <tr 
+                  :key= player.id 
+                  style="height:36px;"
+                >
                   <td>{{ player.no }}</td>
                   <td>{{ player.name }}</td>
                   <td>{{ player.glider_type }}</td>
@@ -167,22 +102,6 @@
           </tbody>
         </table>
       </div>
-
-      <!-- button -->
-      <v-row 
-        justify="end" 
-        class="mt-10 mr-2"
-      >
-        <v-btn
-          height=28
-          color="grey mb-10"
-          nuxt-link
-          to="/driverRegister"
-        >
-          ドライバー追加
-        </v-btn>
-      </v-row>
-
     </v-col>
     
     <!-- edit box -->
@@ -205,10 +124,10 @@
           <v-row>
             <v-col
               cols="12"
-              sm="6"
-              md="6"
+              sm="12"
+              md="12"
             >
-              <p>手配状況</p>
+              <p>回収状況</p>
               <v-radio-group
                 v-model="editedPlayer.state"
                 column
@@ -224,57 +143,8 @@
                 </template>
               </v-radio-group>
             </v-col>
-            <v-col
-              cols="12"
-              sm="6"
-              md="6"
-            >
-              <p>回収担当</p>
-              <v-radio-group
-                v-model="editedPlayer.driver"
-                row
-              >
-                <v-radio
-                  :label= noDriver
-                  color="yellow"
-                  :value= noDriver
-                  class="mb-3 mr-5"
-                ></v-radio>
-                <template v-for="driver in drivers">
-                  <v-radio
-                    :key="driver.id"
-                    :label="driver.name"
-                    :color= driver.color
-                    :value="driver.name"
-                    class="mb-3 mr-5"
-                  ></v-radio>
-                </template>
-              </v-radio-group>
-            </v-col>
-            <v-col>
-              <span>GoogleマップURL</span>
-              <v-text-field v-model="editedPlayer.map"></v-text-field>
-            </v-col>
           </v-row>
-          <v-row>
-            <v-col>
-              <span>回収依頼サンプル</span>
-              <v-icon 
-                @click="copyMessage()" 
-                class="ml-2 mb-3"
-              >
-                mdi-content-copy
-              </v-icon>
-              <div style="border:solid 1px;" class="pt-2 px-3 pb-0">
-                <p id="copyMessage" style="max-width:600px">
-                  {{ editedPlayer.driver }}さん<br>
-                  No.{{ editedPlayer.id }}  {{ editedPlayer.name }}さん({{ editedPlayer.glider_type }})の回収をお願いします。<br>
-                  TOから{{ editedPlayer.direction }}{{ editedPlayer.distance }}Km地点です。<br>
-                  {{ editedPlayer.map }}
-                </p>
-              </div>
-            </v-col>
-          </v-row>
+
         </v-container>
       </v-card-text>
 
@@ -318,13 +188,9 @@ export default {
   name: 'InspirePage',
   data() {
     return {
-      drivers : [],
-      noDriver : "---",
-      selfDriver : "自己回収",
+      driver: {},
 
       states : [
-        { id: 1, label: "---",    color: "yellow",  value: "---"  },
-        { id: 2, label: "未",     color: "red",     value: "未"   },
         { id: 3, label: "手配済", color: "primary", value: "手配" },
         { id: 4, label: "回収済", color: "grey",   value: "済"   },
       ],
@@ -349,18 +215,8 @@ export default {
     },
 
     async getDrivers() {
-      this.drivers = (await this.$axios.get("/drivers")).data.data;
-      this.drivers.forEach(driver => driver["color"]="primary");
-      this.drivers.push(
-        { 
-          id: this.drivers.length+1, 
-          name: this.selfDriver, 
-          capacity: "-", 
-          created_at: "", 
-          updated_at: "", 
-          color: "grey" 
-        }
-      );
+      const drivers = (await this.$axios.get("/drivers")).data.data;
+      this.driver = drivers.find((driver) => driver.id == this.$route.params.id);
     },
 
     stateColor(playerState) {
@@ -403,11 +259,6 @@ export default {
       this.getPlayers();
       this.btnClick = false;
       this.editModal = false;
-    },
-
-    copyMessage() {
-      const copyMessage = document.querySelector('#copyMessage');
-      navigator.clipboard.writeText(copyMessage.innerText);
     },
   },
 

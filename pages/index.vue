@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
+    <v-col cols="10" sm="8" md="6">
       <v-card 
         nuxt 
         to="/headquarters"
@@ -16,7 +16,7 @@
         :key="driver.id"
         nuxt 
         :to="'/driver/' + driver.id"
-        class="modal logo my-4 py-4 d-flex justify-center"
+        class="modal logo my-4 py-0 d-flex justify-center"
       >
         <v-card-title class="headline">
           {{ driver.name }}
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     async getDrivers() {
-      this.drivers = (await this.$axios.get("/drivers/")).data.data;
+      this.drivers = (await this.$axios.get("/drivers")).data.data;
     }
   },
   created() {
