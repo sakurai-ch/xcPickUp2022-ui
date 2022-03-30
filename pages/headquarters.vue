@@ -2,16 +2,33 @@
   <v-row>
     <!-- reload -->
     <v-col
-      cols=12 
+      cols=6 
       class="mt-5"
     >
-      <v-btn
-        height=32
-        color="orange lighten-3 mt-5 mb-0"
-        @click= getPlayers()
-      >
-        更新
-      </v-btn>
+      <v-row justify="start" >
+        <v-btn
+          height=32
+          color="grey mt-5 mb-0 mx-5"
+          nuxt-link
+          to="/"
+        >
+          戻る
+        </v-btn>
+      </v-row>
+    </v-col>
+    <v-col
+      cols=6 
+      class="mt-5"
+    >
+      <v-row justify="end" >
+        <v-btn
+          height=32
+          color="orange lighten-3 mt-5 mb-0 mx-5"
+          @click= loadData()
+        >
+          更新
+        </v-btn>
+      </v-row>
     </v-col>
 
     <!-- headquarters -->
@@ -322,6 +339,11 @@ export default {
     };
   },
   methods: {
+    loadData() {
+      this.getDrivers();
+      this.getPlayers();
+    },
+
     async getPlayers() {
       this.players = (await this.$axios.get("/players")).data.data;
     },
@@ -390,8 +412,7 @@ export default {
   },
 
   created() {
-    this.getDrivers();
-    this.getPlayers();
+    this.loadData();
   }
 }
 
