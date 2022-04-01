@@ -29,13 +29,13 @@
         <table>
           <thead>
             <tr>
-              <td width="10%">No</td>
+              <td width="5%">No</td>
               <td width="20%">Name</td>
               <td width="15%">Type</td>
               <td width="10%">Sts</td>
               <td width="15%">Dist</td>
               <td width="10%">Map</td>
-              <td width="10%">Drv</td>
+              <td width="15%">Drv</td>
             </tr>
           </thead>
           <tbody>
@@ -43,10 +43,9 @@
               <template>
                 <tr :key= player.id>
                   <td>{{ player.no }}</td>
-                  <td>{{ player.name }}</td>
+                  <td>{{ player.name.substr(0,3) }}</td>
                   <td>{{ player.glider_type }}</td>
                   <td 
-                    :class= stateColor(player.state)
                     @click= openEdit(player)
                   >
                     {{ player.state }}
@@ -66,7 +65,7 @@
                   </td>
                   <td v-else :key="'map'+player.id">
                   </td>
-                  <td>{{ player.driver.substr(0,1) }}</td>
+                  <td>{{ player.driver.substr(0,2) }}</td>
                 </tr>
               </template>
             </template>
@@ -92,14 +91,6 @@ export default {
 
     async getPlayers() {
       this.players = (await this.$axios.get("/players")).data.data;
-    },
-
-    stateColor(playerState) {
-      switch(playerState) {
-        case "未":
-          return "red-text";
-        default:
-      }
     },
 
     openMap(player) {
