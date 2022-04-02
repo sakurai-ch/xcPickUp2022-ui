@@ -65,7 +65,18 @@
                   </td>
                   <td v-else :key="'map'+player.id">
                   </td>
-                  <td>{{ player.driver.substr(0,2) }}</td>
+                  <td
+                    v-if="player.state=='---' || player.state=='未'"
+                    :key="'driver'+player.id"
+                  >
+                    ---
+                  </td>
+                  <td 
+                    v-else 
+                    :key="'driver'+player.id"
+                  >
+                    {{ player.driver.substr(0,2) }}
+                  </td>
                 </tr>
               </template>
             </template>

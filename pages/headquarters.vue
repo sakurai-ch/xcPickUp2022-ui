@@ -113,20 +113,21 @@
         <table>
           <thead>
             <tr>
+              <td width="10%"></td>
               <td width="10%">No</td>
               <td width="20%">Name</td>
               <td width="10%">Type</td>
               <td width="10%">Sts</td>
               <td width="10%">Dist</td>
-              <td width="10%">Ord</td>
               <td width="10%">Map</td>
               <td width="10%">Edit</td>
             </tr>
           </thead>
           <tbody>
-            <template v-for="player in players">
+            <template v-for="player in sortedPlayers">
               <template v-if="player.driver==driver.name">
                 <tr :key= player.id>
+                  <td>{{ player.order }}</td>
                   <td>{{ player.no }}</td>
                   <td>{{ player.name }}</td>
                   <td>{{ player.glider_type }}</td>
@@ -137,7 +138,6 @@
                     {{ player.state }}
                   </td>
                   <td>{{ player.direction }}{{ player.distance }}</td>
-                  <td>{{ player.order }}</td>
                   <td 
                     v-if="player.map!='' && player.map!=null" 
                     :key="'map'+player.id"
@@ -348,6 +348,7 @@ export default {
       capacityItems: ["",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
       
       players : [],
+      sortedPlayers: [],
       editedPlayer: {},
       currentPlayerState: "",
       currentPlayerDriver: "",
@@ -365,6 +366,7 @@ export default {
 
     async getPlayers() {
       this.players = (await this.$axios.get("/players")).data.data;
+      this.sortedPlayers = (await this.$axios.get("/players?sort=order")).data.data;
     },
 
     async getDrivers() {
