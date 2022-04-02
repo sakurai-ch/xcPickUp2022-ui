@@ -115,9 +115,10 @@
             <tr>
               <td width="10%">No</td>
               <td width="20%">Name</td>
-              <td width="15%">Type</td>
+              <td width="10%">Type</td>
               <td width="10%">Sts</td>
-              <td width="15%">Dist</td>
+              <td width="10%">Dist</td>
+              <td width="10%">Ord</td>
               <td width="10%">Map</td>
               <td width="10%">Edit</td>
             </tr>
@@ -136,8 +137,9 @@
                     {{ player.state }}
                   </td>
                   <td>{{ player.direction }}{{ player.distance }}</td>
+                  <td>{{ player.order }}</td>
                   <td 
-                    v-if="player.map!=''" 
+                    v-if="player.map!='' && player.map!=null" 
                     :key="'map'+player.id"
                   >
                     <v-icon
@@ -251,9 +253,24 @@
                 </template>
               </v-radio-group>
             </v-col>
-            <v-col>
+            <v-col
+              cols="12"
+              sm="10"
+              md="10"
+            >
               <span>GoogleマップURL</span>
               <v-text-field v-model="editedPlayer.map"></v-text-field>
+            </v-col>
+            <v-col
+              cols="12"
+              sm="2"
+              md="2"
+            >
+              <p class="mb-0">回収順</p>
+                <v-select
+                  v-model="editedPlayer.order"
+                  :items= capacityItems
+                ></v-select>
             </v-col>
           </v-row>
           <v-row>
@@ -328,12 +345,14 @@ export default {
         { id: 3, label: "手配済", color: "primary", value: "手配" },
         { id: 4, label: "回収済", color: "grey",   value: "済"   },
       ],
+      capacityItems: ["",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
       
       players : [],
       editedPlayer: {},
       currentPlayerState: "",
       currentPlayerDriver: "",
       currentPlayerMap: "",
+      currentPlayerOrder: "",
       editModal:false,
       btnClick: false,
     };
@@ -380,6 +399,7 @@ export default {
       this.currentPlayerState = player.state;
       this.currentPlayerDriver = player.driver;
       this.currentPlayerMap = player.map;
+      this.currentPlayerOrder = player.order;
       this.editModal = true;
     },
 
@@ -387,6 +407,7 @@ export default {
       this.editedPlayer.state = this.currentPlayerState;
       this.editedPlayer.driver = this.currentPlayerDriver;
       this.editedPlayer.map = this.currentPlayerMap;
+      this.editedPlayer.order = this.currentPlayerOrder;
       this.editModal = false;
     },
 
@@ -398,6 +419,7 @@ export default {
           state: this.editedPlayer.state,
           map: this.editedPlayer.map,
           driver: this.editedPlayer.driver,
+          order: this.editedPlayer.order,
         }
       )
       this.getPlayers();
