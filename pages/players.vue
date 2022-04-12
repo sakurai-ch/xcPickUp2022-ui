@@ -29,13 +29,13 @@
         <table>
           <thead>
             <tr>
-              <td width="5%">No</td>
-              <td width="20%">Name</td>
-              <td width="15%">Type</td>
-              <td width="10%">Sts</td>
-              <td width="15%">Dist</td>
+              <td width="7%">No</td>
+              <td width="13%">名前</td>
+              <td width="20%">タイプ</td>
+              <td width="10%">状態</td>
+              <td width="15%">距離</td>
               <td width="10%">Map</td>
-              <td width="15%">Drv</td>
+              <td width="15%">回収者</td>
             </tr>
           </thead>
           <tbody>
@@ -43,7 +43,7 @@
               <template>
                 <tr :key= player.id>
                   <td>{{ player.no }}</td>
-                  <td>{{ player.name.substr(0,3) }}</td>
+                  <td>{{ player.name.substr(0,2) }}</td>
                   <td>{{ player.glider_type }}</td>
                   <td 
                     @click= openEdit(player)

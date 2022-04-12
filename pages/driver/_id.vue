@@ -45,14 +45,14 @@
         <table>
           <thead>
             <tr>
-              <td width="10%"></td>
-              <td width="10%">No</td>
-              <td width="20%">Name</td>
-              <td width="10%">Type</td>
-              <td width="10%">Sts</td>
-              <td width="10%">Dist</td>
+              <td width="7%">順</td>
+              <td width="7%">No</td>
+              <td width="20%">名前</td>
+              <td width="13%">タイプ</td>
+              <td width="10%">状態</td>
+              <td width="10%">距離</td>
               <td width="10%">Map</td>
-              <td width="10%">Edit</td>
+              <td width="10%"></td>
             </tr>
           </thead>
           <tbody>
@@ -65,7 +65,7 @@
                   <td>{{ player.order }}</td>
                   <td>{{ player.no }}</td>
                   <td>{{ player.name }}</td>
-                  <td>{{ player.glider_type }}</td>
+                  <td>{{ player.glider_type.substr(0,2) }}</td>
                   <td 
                     :class= stateColor(player.state)
                     @click= openEdit(player)
@@ -192,7 +192,7 @@ export default {
       driver: {},
 
       states : [
-        { id: 3, label: "手配済", color: "primary", value: "手配" },
+        { id: 3, label: "回収中", color: "primary", value: "手配" },
         { id: 4, label: "回収済", color: "grey",   value: "済"   },
       ],
       

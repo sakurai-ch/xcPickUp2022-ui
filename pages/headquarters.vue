@@ -44,12 +44,12 @@
           <thead>
             <tr>
               <td width="10%">No</td>
-              <td width="20%">Name</td>
-              <td width="15%">Type</td>
-              <td width="10%">Sts</td>
-              <td width="15%">Dist</td>
+              <td width="20%">名前</td>
+              <td width="15%">タイプ</td>
+              <td width="10%">状態</td>
+              <td width="15%">距離</td>
               <td width="10%">Map</td>
-              <td width="10%">Edit</td>
+              <td width="10%"></td>
             </tr>
           </thead>
           <tbody>
@@ -113,14 +113,14 @@
         <table>
           <thead>
             <tr>
-              <td width="10%"></td>
+              <td width="10%">順</td>
               <td width="10%">No</td>
-              <td width="20%">Name</td>
-              <td width="10%">Type</td>
-              <td width="10%">Sts</td>
-              <td width="10%">Dist</td>
+              <td width="20%">名前</td>
+              <td width="10%">タイプ</td>
+              <td width="10%">状態</td>
+              <td width="10%">距離</td>
               <td width="10%">Map</td>
-              <td width="10%">Edit</td>
+              <td width="10%"></td>
             </tr>
           </thead>
           <tbody>
