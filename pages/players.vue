@@ -48,7 +48,7 @@
                   <td 
                     @click= openEdit(player)
                   >
-                    {{ player.state }}
+                    {{ player.state.substr(0,2) }}
                   </td>
                   <td>{{ player.direction }}{{ player.distance }}</td>
                   <td 
