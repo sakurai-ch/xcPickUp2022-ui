@@ -32,7 +32,7 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
-      title: '2022 どじからす 飛んでけ～'
+      title: '2022 ParaGliding 日本選手権'
     }
   }
 }

@@ -44,8 +44,9 @@
           <thead>
             <tr>
               <td width="10%">No</td>
+              <td width="10%">ID</td>
               <td width="20%">名前</td>
-              <td width="15%">タイプ</td>
+              <td width="5%">Class</td>
               <td width="10%">状態</td>
               <td width="15%">距離</td>
               <td width="10%">Map</td>
@@ -57,6 +58,7 @@
               <template v-if="player.driver=='---'">
                 <tr :key= player.id>
                   <td>{{ player.no }}</td>
+                  <td>{{ player.comp_id }}</td>
                   <td>{{ player.name }}</td>
                   <td>{{ player.glider_type }}</td>
                   <td 
@@ -116,7 +118,7 @@
               <td width="10%">順</td>
               <td width="10%">No</td>
               <td width="20%">名前</td>
-              <td width="10%">タイプ</td>
+              <td width="10%">Class</td>
               <td width="10%">状態</td>
               <td width="10%">距離</td>
               <td width="10%">Map</td>

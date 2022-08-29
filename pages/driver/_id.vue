@@ -48,7 +48,7 @@
               <td width="7%">順</td>
               <td width="7%">No</td>
               <td width="20%">名前</td>
-              <td width="13%">タイプ</td>
+              <td width="13%">Class</td>
               <td width="10%">状態</td>
               <td width="10%">距離</td>
               <td width="10%">Map</td>
