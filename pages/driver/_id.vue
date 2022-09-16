@@ -57,7 +57,7 @@
           </thead>
           <tbody>
             <template v-for="player in sortedPlayers">
-              <template v-if="player.driver==driver.name && (player.state=='手配' || player.state=='済')">
+              <template v-if="player.driver==driver.name && (player.state=='配車' || player.state=='済')">
                 <tr 
                   :key= player.id 
                   style="height:36px;"
@@ -192,7 +192,7 @@ export default {
       driver: {},
 
       states : [
-        { id: 3, label: "回収中", color: "primary", value: "手配" },
+        { id: 3, label: "回収中", color: "primary", value: "配車" },
         { id: 4, label: "回収済", color: "grey",   value: "済"   },
       ],
       

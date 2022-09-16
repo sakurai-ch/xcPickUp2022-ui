@@ -115,10 +115,11 @@
         <table>
           <thead>
             <tr>
-              <td width="10%">順</td>
+              <td width="5%">順</td>
               <td width="10%">No</td>
+              <td width="10%">ID</td>
               <td width="20%">名前</td>
-              <td width="10%">Class</td>
+              <td width="5%">Class</td>
               <td width="10%">状態</td>
               <td width="10%">距離</td>
               <td width="10%">Map</td>
@@ -131,6 +132,7 @@
                 <tr :key= player.id>
                   <td>{{ player.order }}</td>
                   <td>{{ player.no }}</td>
+                  <td>{{ player.comp_id }}</td>
                   <td>{{ player.name }}</td>
                   <td>{{ player.glider_type }}</td>
                   <td 
@@ -212,7 +214,7 @@
               sm="6"
               md="6"
             >
-              <p>手配状況</p>
+              <p>配車状況</p>
               <v-radio-group
                 v-model="editedPlayer.state"
                 column
@@ -344,7 +346,7 @@ export default {
       states : [
         { id: 1, label: "---",    color: "yellow",  value: "---"  },
         { id: 2, label: "未",     color: "red",     value: "未"   },
-        { id: 3, label: "手配済", color: "primary", value: "手配" },
+        { id: 3, label: "配車済", color: "primary", value: "配車" },
         { id: 4, label: "回収済", color: "grey",   value: "済"   },
       ],
       capacityItems: ["",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
