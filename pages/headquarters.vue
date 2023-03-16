@@ -44,7 +44,7 @@
           <thead>
             <tr>
               <td width="10%">No</td>
-              <td width="10%">ID</td>
+              <td width="10%">Tracker</td>
               <td width="20%">名前</td>
               <td width="5%">Class</td>
               <td width="10%">状態</td>
@@ -117,7 +117,7 @@
             <tr>
               <td width="5%">順</td>
               <td width="10%">No</td>
-              <td width="10%">ID</td>
+              <td width="10%">Tracker</td>
               <td width="20%">名前</td>
               <td width="5%">Class</td>
               <td width="10%">状態</td>
@@ -206,7 +206,7 @@
       <v-card-text>
         <v-container>
           <h2 class="mb-8">
-            {{ editedPlayer.id }}  {{ editedPlayer.name }}
+            {{ editedPlayer.no }}  {{ editedPlayer.name }}
           </h2>
           <v-row>
             <v-col
@@ -289,7 +289,7 @@
               <div style="border:solid 1px;" class="pt-2 px-3 pb-0">
                 <p id="copyMessage" style="max-width:600px">
                   {{ editedPlayer.driver }}さん<br>
-                  No.{{ editedPlayer.id }}  {{ editedPlayer.name }}さん({{ editedPlayer.glider_type }})の回収をお願いします。<br>
+                  No.{{ editedPlayer.no }}  {{ editedPlayer.name }}さん({{ editedPlayer.glider_type }})の回収をお願いします。<br>
                   TOから{{ editedPlayer.direction }}{{ editedPlayer.distance }}Km地点です。<br>
                   {{ editedPlayer.map }}
                 </p>

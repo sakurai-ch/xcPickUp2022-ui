@@ -120,7 +120,7 @@
       <v-card-text>
         <v-container>
           <h2 class="mb-8">
-            {{ editedPlayer.id }}  {{ editedPlayer.name }}
+            {{ editedPlayer.no }}  {{ editedPlayer.name }}
           </h2>
           <v-row>
             <v-col
