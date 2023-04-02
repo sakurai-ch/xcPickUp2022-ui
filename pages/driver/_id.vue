@@ -181,6 +181,27 @@
       </v-row>
     </v-card>
 
+    <v-col cols="12" sm="8" md="6">
+      <v-card>
+        <GmapMap
+          map-type-id="roadmap"
+          :center="maplocation"
+          :zoom="zoom"
+          :style="styleMap"
+          :options="mapOptions"
+        >
+          <GmapMarker
+            :key="index"
+            v-for="(m, index) in this.markers"
+            :position="m.position"
+            :clickable="true"
+            :draggable="false"
+            :label="m.target_name"
+          />
+        </GmapMap>
+      </v-card>
+    </v-col>
+
   </v-row>
 </template>
 
@@ -203,6 +224,18 @@ export default {
       currentPlayerMap: "",
       editModal:false,
       btnClick: false,
+
+      markers: [],
+      maplocation: { lat: 36, lng: 140 },
+      zoom: 10,
+      styleMap: {
+        width: '100%',
+        height: '400px',
+      },
+      mapOptions: {
+        streetViewControl: false,
+        styles: [],
+      },
     };
   },
   methods: {
@@ -211,13 +244,67 @@ export default {
       this.getPlayers();
     },
 
-    async getPlayers() {
-      this.sortedPlayers = (await this.$axios.get("/players?sort=order")).data.data;
-    },
-
     async getDrivers() {
       const drivers = (await this.$axios.get("/drivers")).data.data;
       this.driver = drivers.find((driver) => driver.id == this.$route.params.id);
+    },
+    
+    async getPlayers() {
+      this.sortedPlayers = (await this.$axios.get("/players?sort=order")).data.data;
+      this.createMap();
+    },
+
+    createMap() {
+      let maxLat = null;
+      let minLat = null;
+      let maxLng = null;
+      let minLng = null;
+
+      for (const player of this.sortedPlayers) {
+        if( player.driver == this.driver.name ){
+          // marker
+          this.markers.push(
+            {
+              target_name: String(player.no),
+              title: player.name,
+              position: { 
+                lat: Number(player.latitude), 
+                lng: Number(player.longitude),
+              },
+            }
+          );
+
+          // max-min
+          if( Number(player.latitude) > maxLat || maxLat == null ){
+            maxLat = Number(player.latitude);
+          }
+          if( Number(player.latitude) < minLat || minLat == null ){
+            minLat = Number(player.latitude);
+          }
+          if( Number(player.longitude) > maxLng || maxLng == null ){
+            maxLng = Number(player.longitude);
+          }
+          if( Number(player.longitude) < minLng || minLng == null ){
+            minLng = Number(player.longitude);
+          }
+        }
+      }
+
+      // map center
+      if( maxLat == null || minLat == null ){
+        this.maplocation.lat = 36;
+      } else {
+        this.maplocation.lat = ( maxLat + minLat ) / 2; 
+      }
+      if( maxLng == null || minLng == null ){
+        this.maplocation.lng = 140;
+      } else {
+        this.maplocation.lng = ( maxLng + minLng ) / 2;
+      }
+
+      // map size
+      const len =  ( maxLat - minLat ) * 111
+      this.zoom = 15 - Math.log2(len);
     },
 
     stateColor(playerState) {
