@@ -289,8 +289,8 @@
               <div style="border:solid 1px;" class="pt-2 px-3 pb-0">
                 <p id="copyMessage" style="max-width:600px">
                   {{ editedPlayer.driver }}さん<br>
-                  No.{{ editedPlayer.no }}  {{ editedPlayer.name }}さん({{ editedPlayer.glider_type }})の回収をお願いします。<br>
-                  TOから{{ editedPlayer.direction }}{{ editedPlayer.distance }}Km地点です。<br>
+                  No.{{ editedPlayer.no }}  {{ editedPlayer.name }}さん({{ jGliderType(editedPlayer.glider_type) }})の回収をお願いします。<br>
+                  TOから{{ jDirection(editedPlayer.direction) }}{{ editedPlayer.distance }}Km地点です。<br>
                   {{ editedPlayer.map }}
                 </p>
               </div>
@@ -362,6 +362,30 @@ export default {
       btnClick: false,
     };
   },
+
+  computed: {
+    jDirection(){
+      return (dir)=>{
+             if(dir=="N" ){ return "北"   }
+        else if(dir=="NE"){ return "北東" }
+        else if(dir=="E" ){ return "東"   }
+        else if(dir=="SE"){ return "南東" }
+        else if(dir=="S" ){ return "南"   }
+        else if(dir=="SW"){ return "南西" }
+        else if(dir=="W" ){ return "西"   }
+        else if(dir=="NW"){ return "北西" }
+      }
+    },
+
+    jGliderType(){
+      return (type)=>{
+             if(type=="Ⅰ" ){ return "ハング"   }
+        else if(type=="Ⅳ" ){ return "パラ"     }
+        else if(type=="Ⅴ" ){ return "リジット" }
+      }
+    },
+  },
+
   methods: {
     loadData() {
       this.getDrivers();

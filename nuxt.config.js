@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '2022 ParaGliding 日本選手権',
-    title: '2022 ParaGliding 日本選手権',
+    titleTemplate: '2023 Sky grand prix in ASHIO',
+    title: '2023 Sky grand prix in ASHIO',
     htmlAttrs: {
       lang: 'en'
     },
