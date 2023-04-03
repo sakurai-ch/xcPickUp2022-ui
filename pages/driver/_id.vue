@@ -261,7 +261,7 @@ export default {
       let minLng = null;
 
       for (const player of this.sortedPlayers) {
-        if( player.driver == this.driver.name ){
+        if( player.driver==this.driver.name && player.state=="配車" && player.no && player.latitude && player.longitude){
           // marker
           this.markers.push(
             {
@@ -303,7 +303,7 @@ export default {
       }
 
       // map size
-      const len =  ( maxLat - minLat ) * 111
+      const len =  Math.max( ( maxLat - minLat ) * 111 , 16 ) 
       this.zoom = 15 - Math.log2(len);
     },
 
