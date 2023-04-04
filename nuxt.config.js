@@ -85,5 +85,9 @@ export default {
     extend(config, ctx) {},
     vendor: ['vue2-google-maps'],
     transpile: [/^vue2-google-maps($|\/)/]
+  },
+
+  env: {
+    google_maps_api_key: process.env.GOOGLE_MAPS_API_KEY || ''
   }
 }
