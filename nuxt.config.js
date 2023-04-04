@@ -88,6 +88,6 @@ export default {
   },
 
   env: {
-    google_maps_api_key: process.env.GOOGLE_MAPS_API_KEY || ''
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || ''
   }
 }
