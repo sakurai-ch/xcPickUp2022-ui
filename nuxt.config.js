@@ -89,5 +89,30 @@ export default {
 
   env: {
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || ''
+  },
+
+  generate: {
+    routes: [
+      '/driver/1',
+      '/driver/2',
+      '/driver/3',
+      '/driver/4',
+      '/driver/5',
+      '/driver/6',
+      '/driver/7',
+      '/driver/8',
+      '/driver/9',
+      '/driver/10',
+      '/driver/11',
+      '/driver/12',
+      '/driver/13',
+      '/driver/14',
+      '/driver/15',
+      '/driver/16',
+      '/driver/17',
+      '/driver/18',
+      '/driver/19',
+      '/driver/20',
+    ]
   }
 }
