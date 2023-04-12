@@ -114,5 +114,10 @@ export default {
       '/driver/19',
       '/driver/20',
     ]
-  }
+  },
+
+  publicRuntimeConfig: {
+    playerNo: 'JID',
+    trackerNo: 'Tracker',
+  },
 }

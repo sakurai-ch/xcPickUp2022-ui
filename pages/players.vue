@@ -29,7 +29,7 @@
         <table>
           <thead>
             <tr>
-              <td width="7%">No</td>
+              <td width="7%">{{$config.playerNo}}</td>
               <td width="13%">名前</td>
               <td width="10%">Class</td>
               <td width="10%">状態</td>

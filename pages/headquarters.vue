@@ -43,8 +43,8 @@
         <table>
           <thead>
             <tr>
-              <td width="10%">No</td>
-              <td width="10%">Tracker</td>
+              <td width="10%">{{$config.playerNo}}</td>
+              <td width="10%">{{$config.trackerNo}}</td>
               <td width="20%">名前</td>
               <td width="5%">Class</td>
               <td width="10%">状態</td>
@@ -116,8 +116,8 @@
           <thead>
             <tr>
               <td width="5%">順</td>
-              <td width="10%">No</td>
-              <td width="10%">Tracker</td>
+              <td width="10%">{{$config.playerNo}}</td>
+              <td width="10%">{{$config.trackerNo}}</td>
               <td width="20%">名前</td>
               <td width="5%">Class</td>
               <td width="10%">状態</td>
@@ -206,13 +206,14 @@
       <v-card-text>
         <v-container>
           <h2 class="mb-8">
-            {{ editedPlayer.no }}  {{ editedPlayer.name }}
+            {{ $config.playerNo }}{{ editedPlayer.no }} / {{ $config.trackerNo }}{{ editedPlayer.comp_id }}<br>
+            {{ editedPlayer.name }}
           </h2>
           <v-row>
             <v-col
               cols="12"
-              sm="6"
-              md="6"
+              sm="4"
+              md="4"
             >
               <p>配車状況</p>
               <v-radio-group
@@ -232,8 +233,8 @@
             </v-col>
             <v-col
               cols="12"
-              sm="6"
-              md="6"
+              sm="8"
+              md="8"
             >
               <p>回収担当</p>
               <v-radio-group
@@ -289,7 +290,7 @@
               <div style="border:solid 1px;" class="pt-2 px-3 pb-0">
                 <p id="copyMessage" style="max-width:600px">
                   {{ editedPlayer.driver }}さん<br>
-                  No.{{ editedPlayer.no }}  {{ editedPlayer.name }}さん({{ jGliderType(editedPlayer.glider_type) }})の回収をお願いします。<br>
+                  {{$config.playerNo}}{{ editedPlayer.no }}  {{ editedPlayer.name }}さん({{ jGliderType(editedPlayer.glider_type) }})の回収をお願いします。<br>
                   TOから{{ jDirection(editedPlayer.direction) }}{{ editedPlayer.distance }}Km地点です。<br>
                   {{ editedPlayer.map }}
                 </p>
@@ -497,7 +498,7 @@ thead tr {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  min-width: 350px;
+  min-width: 550px;
 }
 
 .red-text{

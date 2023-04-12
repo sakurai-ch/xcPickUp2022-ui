@@ -46,7 +46,8 @@
           <thead>
             <tr>
               <td width="7%">順</td>
-              <td width="7%">No</td>
+              <td width="7%">{{$config.playerNo}}</td>
+              <td width="10%">{{$config.trackerNo}}</td>
               <td width="20%">名前</td>
               <td width="13%">Class</td>
               <td width="10%">状態</td>
@@ -64,6 +65,7 @@
                 >
                   <td>{{ player.order }}</td>
                   <td>{{ player.no }}</td>
+                  <td>{{ player.comp_id }}</td>
                   <td>{{ player.name }}</td>
                   <td>{{ player.glider_type.substr(0,2) }}</td>
                   <td 
@@ -120,7 +122,8 @@
       <v-card-text>
         <v-container>
           <h2 class="mb-8">
-            {{ editedPlayer.no }}  {{ editedPlayer.name }}
+            {{ $config.playerNo }}{{ editedPlayer.no }} / {{ $config.trackerNo }}{{ editedPlayer.comp_id }}<br>
+            {{ editedPlayer.name }}
           </h2>
           <v-row>
             <v-col
@@ -226,7 +229,7 @@ export default {
       btnClick: false,
 
       markers: [],
-      maplocation: { lat: 36, lng: 140 },
+      maplocation: { lat: 36.276837, lng: 140.145816 },
       zoom: 10,
       styleMap: {
         width: '100%',
@@ -259,6 +262,7 @@ export default {
       let minLat = null;
       let maxLng = null;
       let minLng = null;
+      this.markers = [];
 
       for (const player of this.sortedPlayers) {
         if( player.driver==this.driver.name && player.state=="配車" && player.no && player.latitude && player.longitude){
@@ -292,12 +296,12 @@ export default {
 
       // map center
       if( maxLat == null || minLat == null ){
-        this.maplocation.lat = 36;
+        this.maplocation.lat = 36.276837;
       } else {
         this.maplocation.lat = ( maxLat + minLat ) / 2; 
       }
       if( maxLng == null || minLng == null ){
-        this.maplocation.lng = 140;
+        this.maplocation.lng = 140.145816;
       } else {
         this.maplocation.lng = ( maxLng + minLng ) / 2;
       }
