@@ -111,6 +111,12 @@
       >
         <p class="mb-1 ml-4 text-left">
         ■ {{ driver.name }} （定員：{{ driver.capacity }} ）
+          <v-icon
+            small
+            @click= toDriveEdit(driver.id)
+          >
+            mdi-pencil
+          </v-icon>
         </p>
         <table>
           <thead>
@@ -462,6 +468,10 @@ export default {
       const copyMessage = document.querySelector('#copyMessage');
       navigator.clipboard.writeText(copyMessage.innerText);
     },
+
+    toDriveEdit(id) {
+      this.$router.push('/driverEdit/' + id);
+    }
   },
 
   created() {
