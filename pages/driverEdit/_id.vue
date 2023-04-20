@@ -5,7 +5,9 @@
       lg=6 md=6 sm=6 cols=10
       class="mt-5"
     >
-      <p class="mb-2 mt-5">ドライバー編集</p>
+      <p class="mb-2 mt-5 text-h6">ドライバー編集</p>
+      <p class="mb-0 mt-5">・ドライバー名の最初の2文字が、選手が確認する画面に表示されます。</p>
+      <p class="mb-2 mt-0 red--text">★選手を配車した状態の時は、ドライバー名の変更はしないで下さい。</p>
       <v-card 
         flat 
         class="modal-inner modal"

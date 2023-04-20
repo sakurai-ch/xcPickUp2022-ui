@@ -117,7 +117,8 @@ export default {
   },
 
   publicRuntimeConfig: {
-    playerNo: 'JID',
+    // playerNo: 'JID',
+    playerNo: 'No',
     trackerNo: 'Tracker',
   },
 }

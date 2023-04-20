@@ -5,7 +5,8 @@
       lg=6 md=6 sm=6 cols=10
       class="mt-5"
     >
-      <p class="mb-2 mt-5">ドライバー登録</p>
+      <p class="mb-2 mt-5 text-h6">ドライバー登録</p>
+      <p class="mb-2 mt-5">・ドライバー名の最初の2文字が、選手が確認する画面に表示されます。</p>
       <v-card 
         flat 
         class="modal-inner modal"
