@@ -32,7 +32,7 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
-      title: '2023 Sky grand prix in ASHIO'
+      title: '2023 どじからす 飛んでけ～',
     }
   }
 }
